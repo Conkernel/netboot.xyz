@@ -1,0 +1,50 @@
+---
+# overrides defaults in netbootxyz role
+generate_menus: true
+generate_disks: true
+generate_checksums: false
+generate_local_vars: true
+make_num_jobs: 1
+
+# set desired site name
+site_name: MiNetboot
+
+# set desired boot domain
+boot_domain: ansible.casa.lan
+
+# set boot version
+boot_version: "tomato"
+
+# bootloader_tftp_enabled: false
+# bootloader_https_enabled: true
+# bootloader_http_enabled: true
+
+# set release overrides from standard netboot.xyz defaults
+# release_overrides:
+#   alpinelinux:
+#     name: "Alpine Linux"
+#   fedora:
+#     mirror: "mirrors.kernel.org"
+
+# set utilitiesefi_overrides from standard netboot.xyz defaults for EFI utilities
+# utilitiesefi_overrides:
+#  supergrub:
+#    enabled: false
+
+# set utilities_overrides from standard netboot.xyz defaults for PC BIOS utilities
+# utilitiespcbios64_overrides:
+#  supergrub:
+#    enabled: false
+
+# set licensed media locations in boot.cfg
+# win_base_url:
+# rhel_base_url:
+
+# Lo siguiente se añadirá antes de mostrar el menú, por lo que podemos añadir o sobreescribir variables y valores:
+early_menu_enabled: true
+early_menu_contents: |
+  # Esto es para indicarle la url en la que están las fuentes de esxi
+  set vmware_base_url http://router.casa.lan:85/isos/esxi/esxi8.x_installer
+  # Esto iguala la variable nuestra versión con de la última versión detectada en la web de netboot.xyz. De lo contrario, el menú tratará de usar otra imagen y volverá a lanzar una instancia de ipxe.
+  chain --timeout 5000 https://boot.netboot.xyz/version.ipxe
+  set version ${upstream_version}
