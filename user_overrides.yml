@@ -1,10 +1,10 @@
 ---
 # overrides defaults in netbootxyz role
 generate_menus: true
-generate_disks: true
+generate_disks: false
 generate_checksums: false
-generate_local_vars: true
-make_num_jobs: 1
+generate_local_vars: false
+make_num_jobs: 2
 
 # set desired site name
 site_name: MiNetboot
@@ -15,9 +15,13 @@ boot_domain: ansible.casa.lan
 # set boot version
 boot_version: "tomato"
 
-# bootloader_tftp_enabled: false
-# bootloader_https_enabled: true
-# bootloader_http_enabled: true
+bootloader_tftp_enabled: false
+bootloader_https_enabled: true
+bootloader_http_enabled: false
+
+# hay que comentar la línea de la línea "clear install_url" en el fichero ubuntu.ipxe.j2 para que no burre esta url:
+install_url: http://10.0.0.1:85/cloud-init/Ubuntu/Ubuntu24.04_full
+# y así poder hacer una instalación automática, cogiendo de ahí el user-data de cloud-init
 
 # set release overrides from standard netboot.xyz defaults
 # release_overrides:
