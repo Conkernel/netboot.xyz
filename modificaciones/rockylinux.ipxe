@@ -4,14 +4,14 @@
 # https://rockylinux.org/
 
 # :mimenu
-# set os_arch x86_64
-# set os Rocky Linux
-# set osversion 9
-# set install_mode inst.text
-# set repo http://mirror.uv.es/mirror/rocky-linux/9.4/BaseOS/x86_64/os/
+set os_arch x86_64
+set os Rocky Linux
+set osversion 9
+set install_mode inst.text
+set repo http://mirror.uv.es/mirror/rocky-linux/9.4/BaseOS/x86_64/os/
 set ks_url http://router.casa.lan:85/cloud-init/redhat/ks.cfg
-# set params inst.ks=${ks_url} inst.sshd ipv6.disable=1
-# set ipparam ip=dhcp
+set params inst.ks=${ks_url} inst.sshd ipv6.disable=1
+set ipparam ip=dhcp
 # goto bootos_images
 
 
