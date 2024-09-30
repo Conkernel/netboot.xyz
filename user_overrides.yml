@@ -20,7 +20,10 @@ bootloader_https_enabled: true
 bootloader_http_enabled: false
 
 # hay que comentar la línea de la línea "clear install_url" en el fichero ubuntu.ipxe.j2 para que no burre esta url:
+
 install_url: http://10.0.0.1:85/cloud-init/Ubuntu/Ubuntu24.04_full
+# install_url: http://10.0.0.1:85/cloud-init/Ubuntu/Ubuntu24.04_fast
+
 # y así poder hacer una instalación automática, cogiendo de ahí el user-data de cloud-init
 
 # set release overrides from standard netboot.xyz defaults
@@ -52,3 +55,5 @@ early_menu_contents: |
   # Esto iguala la variable nuestra versión con de la última versión detectada en la web de netboot.xyz. De lo contrario, el menú tratará de usar otra imagen y volverá a lanzar una instancia de ipxe.
   chain --timeout 5000 https://boot.netboot.xyz/version.ipxe
   set version ${upstream_version}
+  install_url: http://10.0.0.1:85/cloud-init/Ubuntu/Ubuntu24.04_full
+  #install_url: http://10.0.0.1:85/cloud-init/Ubuntu/Ubuntu24.04_fast
